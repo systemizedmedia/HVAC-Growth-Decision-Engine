@@ -1,0 +1,43 @@
+date,channel,campaign,spend,leads,appointments,sales,revenue
+2026-03-01,Meta,AC Replacement Financing,4200,62,22,5,67500
+2026-03-01,Google Search,Emergency AC Repair,3100,34,21,7,73500
+2026-03-01,LSA,HVAC Local Services,1800,19,14,5,52500
+2026-03-08,Meta,AC Replacement Financing,4600,70,24,5,65000
+2026-03-08,Google Search,Emergency AC Repair,3500,38,24,8,88000
+2026-03-08,LSA,HVAC Local Services,2100,22,15,5,57500
+2026-03-15,Meta,New System Offer,5100,76,26,6,78000
+2026-03-15,Google Search,AC Replacement Search,4200,42,27,9,99000
+2026-03-15,LSA,HVAC Local Services,2300,24,17,6,69000
+2026-03-22,Meta,New System Offer,5600,81,27,6,75000
+2026-03-22,Google Search,AC Replacement Search,4700,45,28,9,108000
+2026-03-22,LSA,HVAC Local Services,2500,25,18,6,72000
+2026-03-29,Meta,Tune Up Offer,3900,88,20,2,18000
+2026-03-29,Google Search,Emergency AC Repair,5000,46,30,10,115000
+2026-03-29,LSA,HVAC Local Services,2700,27,19,7,80500
+2026-04-05,Meta,AC Replacement Financing,6100,86,29,7,87500
+2026-04-05,Google Search,AC Replacement Search,5300,49,32,11,132000
+2026-04-05,LSA,HVAC Local Services,2900,28,20,7,87500
+2026-04-12,Meta,Tune Up Offer,4300,92,21,2,20000
+2026-04-12,Google Search,Emergency AC Repair,5600,52,33,11,126500
+2026-04-12,LSA,HVAC Local Services,3100,30,21,7,84000
+2026-04-19,Meta,New System Offer,6400,90,30,7,98000
+2026-04-19,Google Search,AC Replacement Search,5900,54,35,12,144000
+2026-04-19,LSA,HVAC Local Services,3300,31,22,8,96000
+2026-04-26,Meta,AC Replacement Financing,6700,94,31,7,94500
+2026-04-26,Google Search,AC Replacement Search,6200,57,36,12,150000
+2026-04-26,LSA,HVAC Local Services,3500,32,23,8,100000
+2026-05-03,Meta,AC Replacement Financing,7000,96,32,8,112000
+2026-05-03,Google Search,AC Replacement Search,6600,60,39,13,169000
+2026-05-03,LSA,HVAC Local Services,3700,34,24,8,104000
+2026-05-10,Meta,New System Offer,7400,102,35,8,108000
+2026-05-10,Google Search,Emergency AC Repair,6900,62,41,14,175000
+2026-05-10,LSA,HVAC Local Services,3900,35,25,9,112500
+2026-05-17,Meta,Tune Up Offer,4800,108,23,3,28500
+2026-05-17,Google Search,AC Replacement Search,7200,64,42,14,182000
+2026-05-17,LSA,HVAC Local Services,4100,36,26,9,117000
+2026-05-24,Meta,New System Offer,7900,106,36,9,126000
+2026-05-24,Google Search,AC Replacement Search,7600,68,44,15,195000
+2026-05-24,LSA,HVAC Local Services,4300,38,27,9,121500
+2026-05-31,Meta,AC Replacement Financing,8200,110,37,9,121500
+2026-05-31,Google Search,Emergency AC Repair,8000,70,46,16,208000
+2026-05-31,LSA,HVAC Local Services,4500,39,28,10,135000

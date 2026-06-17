@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HVAC Growth Decision Engine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Math-based growth diagnostics</p>
+        <h1>HVAC Growth Decision Engine</h1>
+        <p class="subhead">
+          Paste or upload channel/campaign data to identify bottlenecks, MER, funnel trends,
+          and budget allocation opportunities without arbitrary weighted scores.
+        </p>
+      </div>
+      <div class="hero-card">
+        <p>Core rule</p>
+        <strong>No made-up scores. Only actual inputs, ratios, trend comparisons, and scenario math.</strong>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>1. Add Data</h2>
+            <p>Required columns: date, channel, campaign, spend, leads, appointments, sales, revenue.</p>
+          </div>
+          <div class="actions">
+            <button id="loadSampleBtn" class="secondary">Load Sample Data</button>
+            <button id="downloadSampleBtn" class="secondary">Download CSV Template</button>
+          </div>
+        </div>
+
+        <div class="upload-row">
+          <label class="file-label">
+            Upload CSV
+            <input id="csvFile" type="file" accept=".csv" />
+          </label>
+          <div class="hint">
+            Dates should be in YYYY-MM-DD format. Revenue is optional, but MER needs revenue.
+          </div>
+        </div>
+
+        <textarea id="csvInput" spellcheck="false" placeholder="Paste CSV data here..."></textarea>
+
+        <div class="actions">
+          <button id="analyzeBtn">Analyze Data</button>
+          <button id="clearBtn" class="danger">Clear</button>
+        </div>
+      </section>
+
+      <section class="panel controls">
+        <div>
+          <label for="windowSelect">Primary Timeframe</label>
+          <select id="windowSelect">
+            <option value="7d">Past 7 days to date</option>
+            <option value="mtd">Month to date</option>
+            <option value="30d" selected>Past 30 days to date</option>
+            <option value="90d">Past 90 days to date</option>
+            <option value="365d">Past 365 days to date</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="baselineSelect">Baseline Comparison</label>
+          <select id="baselineSelect">
+            <option value="30d">Past 30 days</option>
+            <option value="90d" selected>Past 90 days</option>
+            <option value="365d">Past 365 days</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="budgetInput">Scenario Budget Increase</label>
+          <input id="budgetInput" type="number" min="0" step="100" value="10000" />
+        </div>
+
+        <div>
+          <label for="groupSelect">Budget Ranking Level</label>
+          <select id="groupSelect">
+            <option value="channel" selected>Channel</option>
+            <option value="campaign">Campaign</option>
+          </select>
+        </div>
+      </section>
+
+      <section id="status" class="status hidden"></section>
+
+      <section id="results" class="hidden">
+        <section class="grid summary-grid">
+          <div class="metric-card">
+            <span>Total Spend</span>
+            <strong id="totalSpend">$0</strong>
+          </div>
+          <div class="metric-card">
+            <span>Total Revenue</span>
+            <strong id="totalRevenue">$0</strong>
+          </div>
+          <div class="metric-card">
+            <span>MER</span>
+            <strong id="totalMer">N/A</strong>
+          </div>
+          <div class="metric-card">
+            <span>Sales</span>
+            <strong id="totalSales">0</strong>
+          </div>
+          <div class="metric-card">
+            <span>Lead → Appointment</span>
+            <strong id="leadToAppt">N/A</strong>
+          </div>
+          <div class="metric-card">
+            <span>Appointment → Sale</span>
+            <strong id="apptToSale">N/A</strong>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>2. Diagnostic Summary</h2>
+              <p id="dateRangeLabel">No date range selected.</p>
+            </div>
+          </div>
+          <div id="diagnosticCards" class="diagnostic-grid"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>3. Bottleneck Detection</h2>
+              <p>
+                Uses actual current funnel vs. selected baseline. The bottleneck is the stage with the
+                largest mathematically modeled lost sales if restored to baseline.
+              </p>
+            </div>
+          </div>
+          <div id="bottleneckOutput" class="insight-box"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>4. Budget Allocation Ranking</h2>
+              <p>
+                Ranks where additional budget would be associated with the most sales/revenue if each
+                channel or campaign maintained its actual efficiency in the selected window.
+              </p>
+            </div>
+          </div>
+          <div id="budgetOutput" class="table-wrap"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>5. Channel Analysis</h2>
+              <p>Actual performance by channel for the selected timeframe.</p>
+            </div>
+          </div>
+          <div id="channelTable" class="table-wrap"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>6. Campaign Analysis</h2>
+              <p>Actual performance by campaign for the selected timeframe.</p>
+            </div>
+          </div>
+          <div id="campaignTable" class="table-wrap"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>7. Timeframe Comparison</h2>
+              <p>Compares MER, funnel rates, and volume across 7D, MTD, 30D, 90D, and 365D.</p>
+            </div>
+          </div>
+          <div id="timeframeTable" class="table-wrap"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
